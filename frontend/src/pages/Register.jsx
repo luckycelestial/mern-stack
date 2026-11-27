@@ -16,20 +16,23 @@ export default function Register() {
             navigate("/")
         }
         return ( 
-            <>
-            <form onSubmit={handleSubmit(onsubmit1)}>
-                <label>Username</label><br/>
-                <input type="text" placeholder="Enter name"  {...register("name")}/><br/><br/>
+            <div className="flex justify-center items-center h-screen">
+            <form className="border-3 bg-green-200 shadow-2xl p-3 shadow-yellow-500 flex flex-col gap-2 items-center justify-around rounded-lg h-120 w-80" onSubmit={handleSubmit(onsubmit1)}>
+                <div className="font-bold">REGISTERATION FORM</div>
+                <div className="flex flex-row gap-2">
+                <br/>
+                <input className="border-2 rounded-full p-2" type="text" placeholder="Enter name"  {...register("name")}/>
                 <p>{errors.name?.message}</p>
+                </div>
 
-                <input type="email" placeholder="Enter email"  {...register("email")}/><br/><br/>
+                <input className="border-2 rounded-full p-2" type="email" placeholder="Enter email"  {...register("email")}/>
                 <p>{errors.email?.message}</p>
-                <input type="text" placeholder="Enter password"  {...register("password")}/><br/><br/>
+                <input className="border-2 rounded-full p-2" type="text" placeholder="Enter password"  {...register("password")}/>
                 <p>{errors.password?.message}</p>
-                <input type="number" placeholder="Enter age"  {...register("age")}/><br/><br/>
+                <input className="border-2 rounded-full p-2"  type="number" placeholder="Enter age"  {...register("age")}/>
                 <p>{errors.age?.message}</p>
-                <button type="submit">Submit</button>
+                <button className="font-bold w-40 text-white bg-violet-900 border-black border-2 p-2 rounded-3xl" type="submit">Submit</button>
             </form>
-            </>
+            </div>
     );
 }

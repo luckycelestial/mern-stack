@@ -5,15 +5,15 @@ import Details from './pages/admin/Details.jsx'
 import Student from './pages/student/Student.jsx'
 import StudentDashboard from './pages/student/Dashboard.jsx'
 import Profile from './pages/student/Profile.jsx'
-// import Login from './pages/Login.jsx'
-// import Register from './pages/Register.jsx'
+import Login from './pages/Login.jsx'
+import Register from './pages/Register.jsx'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} /> */}
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         
         <Route path="/admin" element={<Admin />} >
