@@ -1,29 +1,37 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { registerschema } from '../components/FormSchema/registerschema.js'
 
-function Login(){
-    const[formdata,setFormdata]=useState({user:"",pass:""})
-
-    const print = (e)=>{
-        e.preventDefault();
-        console.log(formdata)
-    };
-function handlechange(e){
+function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [logindata, setFormdata]= useState({
+    username:"",
+    password:""
+  })
+  function handlechange(e){setFormdata({
+    ... logindata,
+    [e.target.name]:e.target.value})}
+  
+  const handlesubmit = (e) => {
     e.preventDefault();
-    setFormdata({...formdata,[e.target.name]:e.target.value})
-}
-    return( 
-    <>
-    <form className="flex flex-col" onSubmit={print} >
-        <label>Email </label>
-        <input placeholder="Enter username" required type="text" name="user" onChange={handlechange} />
-    
-        <label>Password </label>
-        <input placeholder="Enter Password" required type="password" name="pass" onChange={handlechange} />
+    const registerdata = location.state;
+    console.log("login page",logindata)
+    if (logindata.username===registerdata.name && logindata.password===registerdata.password){
+      console.log("if success")
+      navigate("/dashboard")
+    }else{}
+  }
 
-        <button type="submit">Submit</button>
-    </form>
- 
+  return (
+    <>
+      <div className="text-orange-500 text3xl">TextIPutHere</div>
+      <form onSubmit={handlesubmit}>
+        <input type="text" required placeholder="Enter your username" name="username"  onChange={handlechange}></input>
+        <input type="password" required placeholder="Enter your password" name="password"  onChange={handlechange}></input>
+        <button type="submit">submit</button>
+      </form>
     </>
-    );
+  )
 }
 export default Login;
